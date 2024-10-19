@@ -1,0 +1,286 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+      <!--heading in the center -->
+      <div class="row">
+        <h1 class="text-center">Carbon Footprint Calculator</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#tab1" data-bs-toggle = "tab" data-bs-target = "#tab1" disabled>General</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab2" data-bs-toggle = "tab" data-bs-target = "#tab2" disabled>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab3" data-bs-toggle = "tab" data-bs-target = "#tab3" disabled>Travel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab4" data-bs-toggle = "tab" data-bs-target = "#tab4" disabled>Food</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab5" data-bs-toggle = "tab" data-bs-target = "#tab5" disabled>Electronic usage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab6" data-bs-toggle = "tab" data-bs-target = "#tab6" disabled>Shopping</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab7" data-bs-toggle = "tab" data-bs-target = "#tab7" id="resultTab" disabled>Result</a>
+            </li>
+          </ul>
+        </div>
+        <!-- columns for buttons -->
+        <div class="col-auto"> 
+          <button class="btn btn-success my-2" id="homeButton">Home</button>
+        </div>
+        <div class="col-auto"> 
+          <button type="button" class="btn btn-success my-2" id="recalculateButton">Recalculate</button>  
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"> </div> 
+      </div>
+      <div class="row my-2 justify-content-center">
+        <div class="col-md-6" id="cardContainer">
+          <div class="card">
+              <div class="card-header bg-success text-light text-center">
+                Fill the form below
+              </div>
+              <div class="card-body tab-content">
+                <div id="tab1" class="tab-pane fade show active">
+                  <form>
+                    <div class="row mb-3">
+                      <label for="name" class="col-sm-6 col-form-label">Name</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="name" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="age" class="col-sm-6 col-form-label">Age</label>
+                        <div class="col-sm-6">
+                          <input type="number" class="form-control" id="age" required min="10" max="90">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="country" class="col-sm-6 col-form-label">Country</label>
+                        <div class="col-sm-6">
+                          <select class="form-select countrypicker" aria-label="Default select example" id ="country" > </select>
+                        </div>                     
+                    </div>
+                  </form>
+                </div>
+                <div id="tab2" class="tab-pane fade">
+                  <form>
+                   <div class="row mb-3">
+                     <label for="energyTypeDropDown" class="col-sm-6 col-form-label">What type of energy is primarily used in your home?</label>
+                     <div class="col-sm-6">
+                       <select class="form-select" aria-label="Default select example" id = "energyTypeDropDown">
+                       <option value="Renewable energy">Renewable energy</option>
+                       <option value="Natural gas">Natural gas</option>
+                       <option value="Electricity from coal">Electricity from coal</option>
+                      </select>
+                     </div>
+                   </div>                   
+                   <div class="row mb-3">
+                    <label for="range1" class="col-sm-6 col-form-label">How often do you use air conditioning or heating?</label>
+                    <div class="col-sm-6">
+                      <input type="range" class="form-range" min="0" max="4" step="1" id="range1">
+                      <div class="d-flex justify-content-between">
+                        <span>Never</span>
+                        <span>Always</span>
+                    </div>
+                    </div>                     
+                  </div>                                           
+                  </form>
+                 </div>
+                 <div id="tab3" class="tab-pane fade">
+                  <form>
+                    <div class="row mb-3">
+                      <label for="travelTypeDropDown" class="col-sm-6 col-form-label">How do you commute to school or work?</label>
+                      <div class="col-sm-6">
+                         <select class="form-select" aria-label="Default select example" id = "travelTypeDropDown">
+                            <option value="I walk or use a bicycle">I walk or use a bicycle</option>
+                            <option value="I use public transportation or the school bus">I use public transportation or the school bus</option>
+                            <option value="I carpool">I carpool</option>
+                            <option value="I drive alone">I drive alone</option>
+                         </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="kmCount" class="col-sm-6 col-form-label">How many kilometers do you travel one way for your commute?</label>
+                      <div class="col-sm-6">
+                           <input type="number" class="form-control" id="kmCount" required  min="1">
+                      </div>
+                    </div>
+                  </form>
+                 </div>
+                 <div id="tab4" class="tab-pane fade">
+                  <form>
+                    <div class="row mb-3">
+                       <label for="dietDropDown" class="col-sm-6 col-form-label">What kind of diet do you follow?</label>
+                       <div class="col-sm-6">
+                          <select class="form-select" aria-label="Default select example" id = "dietDropDown">
+                            <option value="Vegan">Vegan</option>
+                            <option value="Vegetarian">Vegetarian</option>
+                            <option value="Meat occasionally">Meat occasionally</option>
+                            <option value="Regular meat eater">Regular meat eater </option>
+                          </select>
+                       </div>
+                    </div>              
+                    <div class="row mb-3">
+                       <label for="range2" class="col-sm-6 col-form-label">How often do you eat out or order takeaway?</label>
+                       <div class="col-sm-6">
+                           <input type="range" class="form-range" min="0" max="4" step="1" id="range2">
+                           <div class="d-flex justify-content-between">
+                               <span>Never</span>
+                               <span>Always</span>
+                           </div>
+                       </div>
+                    </div>              
+                  </form>
+                </div>
+                <div id="tab5" class="tab-pane fade">
+                  <form>
+                    <div class="row mb-3">
+                      <label class="col-sm-6 col-form-label">Which electronic devices do you use daily?</label>
+                      <div class="col-sm-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="smartphone" id="smartphone">
+                          <label class="form-check-label" for="smartphone">
+                            Smartphone
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="laptop" id="laptop">
+                          <label class="form-check-label" for="laptop">
+                            Laptop/Desktop
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="gamingConsole" id="gamingConsole">
+                          <label class="form-check-label" for="gamingConsole">
+                            Gaming console
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="television" id="television">
+                          <label class="form-check-label" for="television">
+                            Television
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="questionLabel" class="d-none">
+                      How many hours do you use each selected device  daily?
+                    </div>
+                    <div class="row mb-3 d-none" id="phoneUsageBlock">
+                      <label for="phoneUsage" class="col-sm-6 col-form-label">Smartphone</label>
+                      <div class="col-sm-6">
+                        <input type="number" class="form-control" id="phoneUsage" value="0" min = "0" max="16">
+                      </div>
+                    </div>
+                    <div class="row mb-3 d-none" id="laptopUsageBlock">
+                      <label for="laptopUsage" class="col-sm-6 col-form-label">Laptop/Desktop</label>
+                      <div class="col-sm-6">
+                        <input type="number" class="form-control" id="laptopUsage" value="0" min = "0" max="16">
+                      </div>
+                    </div>
+                    <div class="row mb-3 d-none" id="consoleUsageBlock">
+                      <label for="consoleUsage" class="col-sm-6 col-form-label">Gaming console</label>
+                      <div class="col-sm-6">
+                        <input type="number" class="form-control" id="consoleUsage" value="0" min = "0" max="16">
+                      </div>
+                    </div>
+                    <div class="row mb-3 d-none" id="tvUsageBlock">
+                      <label for="tvUsage" class="col-sm-6 col-form-label">Television</label>
+                      <div class="col-sm-6">
+                        <input type="number" class="form-control" id="tvUsage" value="0" min = "0" max="16">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="onlineHoursDropdown" class="col-sm-6 col-form-label">How many hours do you spend online?</label>
+                      <div class="col-sm-6">
+                        <select class="form-select" aria-label="Default select example" id="onlineHoursDropdown">
+                          <option value="Less than 2 hours">Less than 2 hours</option>
+                          <option value="2-4 hours">2-4 hours</option>
+                          <option value="4-6 hours">4-6 hours</option>
+                          <option value="More than 6 hours">More than 6 hours</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div id="tab6" class="tab-pane fade">
+                  <form>
+                    <div class="row mb-3">
+                       <label for="clothesFrequency" class="col-sm-6 col-form-label">How often do you buy new clothes?</label>
+                       <div class="col-sm-6">
+                          <select class="form-select" aria-label="Default select example" id = "clothesFrequency">
+                            <option value="Rarely">Rarely</option>
+                            <option value="Every few months">Every few months</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="More than once a month">More than once a month</option>
+                          </select>
+                       </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-6 col-form-label">Do you recycle?</label>
+                      <div class="col-sm-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Always" required>
+                            <label class="form-check-label" for="inlineRadio1"> Always </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Sometimes" required>
+                            <label class="form-check-label" for="inlineRadio2"> Sometimes </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Never" required>
+                            <label class="form-check-label" for="inlineRadio3">Never</label>
+                        </div>
+                      </div>
+                     </div>
+                  </form>
+                </div>
+              </div>
+               
+              <div class="card-footer text-muted text-center">
+                <button type="button" class="btn btn-success m-2" id="prevButton">Prev</button>
+                <button type="button" class="btn btn-success m-2" id="nextButton">Next</button>
+                <button type="button" class="btn btn-success m-2 d-none" id="submitButton">Submit</button>                
+          </div>
+        </div>
+      </div>
+      <div id="tab7" class="tab-pane fade">
+        <div class="col-md-6 border">
+          <div id="resultContainer" class="display-6"> </div>
+          <div id="chartContainer"> </div>
+          <div id="suggestionContainer"> </div>
+        </div>
+        <div class="col-md-6 border">
+          <div id="chartContainer1"> </div>
+          <div id="chartContainer2"> </div>
+        </div>
+    </div>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select-country@4.2.0/dist/js/bootstrap-select-country.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.8.0/dist/sql-wasm.min.js"> 
+    </script> 
+    <script src="javascript/boilerplate.js"></script>
+    <script src="javascript/formPage.js"></script>
+  </body>
+</html>
